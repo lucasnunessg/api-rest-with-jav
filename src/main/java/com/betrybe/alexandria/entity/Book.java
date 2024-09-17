@@ -13,7 +13,7 @@ public class Book {
     private String title;
     private String genre;
 
-    public Book() {
+    public Book(String title, String genre) {
 
     }
 
