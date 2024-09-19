@@ -43,4 +43,8 @@ public class PublisherService {
 
         return publisher;
     }
+
+    public Publisher create(Publisher publisher ) {
+        return publisherRepository.save(publisher);
+    }
 }
