@@ -4,27 +4,30 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "books_details")
-public class BookDetails {
+public class BookDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String summary;
-    private Integer page_count;
+    private Integer pageCount;
     private Integer year;
     private String isbn;
-    private Integer book_id;
+    //escolhi o bookdetail pra ser o dono do relcaionamento
+    @OneToOne(optional = false) //aqui é pra dizer q nao pode existir o book detail sem existir um livro
+    @JoinColumn(name = "book_id")
+    private Book book;
 
-    public BookDetails() {
+    public BookDetail() {
 
     }
 
-    public BookDetails(String summary, Integer page_count, Integer year, String isbn, Integer book_id) {
+    public BookDetail(String summary, Integer page_count, Integer year, String isbn) {
         this.summary = summary;
-        this.page_count = page_count;
+        this.pageCount = page_count;
         this.year = year;
         this.isbn = isbn;
-        this.book_id = book_id;
 
     }
 
@@ -44,12 +47,12 @@ public class BookDetails {
         this.summary = summary;
     }
 
-    public Integer getPage_count() {
-        return page_count;
+    public Integer getPageCount() {
+        return pageCount;
     }
 
-    public void setPage_count(Integer page_count) {
-        this.page_count = page_count;
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
     }
 
     public Integer getYear() {
@@ -68,11 +71,11 @@ public class BookDetails {
         this.isbn = isbn;
     }
 
-    public Integer getBook_id() {
-        return book_id;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBook_id(Integer book_id) {
-        this.book_id = book_id;
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

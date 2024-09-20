@@ -13,6 +13,9 @@ public class Book {
     private String title;
     private String genre;
 
+    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL) //eu preciso por o nome do atributo q define o relacionamento la no outro lado
+    private BookDetail detail;
+
     public Book(String title, String genre) {
 
     }
@@ -44,5 +47,13 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public BookDetail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(BookDetail detail) {
+        this.detail = detail;
     }
 }
