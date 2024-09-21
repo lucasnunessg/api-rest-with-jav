@@ -16,7 +16,7 @@ public class BookDetail {
     private String isbn;
     //escolhi o bookdetail pra ser o dono do relcaionamento
     @OneToOne(optional = false) //aqui é pra dizer q nao pode existir o book detail sem existir um livro
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id") //aqui é definido a foreign key
     private Book book;
 
     public BookDetail() {
