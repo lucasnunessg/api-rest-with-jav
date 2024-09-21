@@ -1,6 +1,8 @@
 package com.betrybe.alexandria.entity;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +16,7 @@ public class Author {
     private String nationality;
 
     @ManyToMany(mappedBy = "authors")
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();;
 
     public Author() {
     }

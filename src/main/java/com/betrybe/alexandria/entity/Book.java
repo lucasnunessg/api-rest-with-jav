@@ -1,5 +1,6 @@
 package com.betrybe.alexandria.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.*;
 
@@ -26,7 +27,7 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"), //do lado que esta atualmente
             inverseJoinColumns = @JoinColumn(name = "author_id") // do outro lado
     )
-    private List<Author> authors;
+    private List<Author> authors = new ArrayList<>();
 
     public Book(String title, String genre) {
 

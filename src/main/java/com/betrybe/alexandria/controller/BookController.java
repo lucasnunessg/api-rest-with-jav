@@ -9,6 +9,7 @@ import com.betrybe.alexandria.entity.Book;
 import java.util.List;
 
 import com.betrybe.alexandria.entity.BookDetail;
+import com.betrybe.alexandria.exception.AuthorNotFoundException;
 import com.betrybe.alexandria.exception.BookDetailNotFoundException;
 import com.betrybe.alexandria.exception.BookNotFoundException;
 import com.betrybe.alexandria.exception.PublisherNotFoundException;
@@ -90,5 +91,15 @@ public class BookController {
         return BookDto.fromEntity(
                 bookService.removeBookPublisher(bookId)
         );
+    }
+
+    @PutMapping("/{bookId}/authors/authorsId")
+    public BookDto addBookAuthor(@PathVariable Long bookId, @PathVariable Long authorId) throws AuthorNotFoundException, BookNotFoundException {
+        return BookDto.fromEntity(bookService.addBookAuthor(bookId, authorId)); //essa rota cria a associação
+    }
+
+    @DeleteMapping("/{bookId}/authors/{authorId}")
+    public BookDto removeFrmoAuthor(@PathVariable Long bookId, @PathVariable Long authorId) throws AuthorNotFoundException, BookNotFoundException {
+        return BookDto.fromEntity(bookService.removeBookAuthor(bookId, authorId));
     }
 }
