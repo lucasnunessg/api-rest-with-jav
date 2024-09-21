@@ -1,6 +1,7 @@
 package com.betrybe.alexandria.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
@@ -11,6 +12,9 @@ public class Author {
     private Long id;
     private String name;
     private String nationality;
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Book> books;
 
     public Author() {
     }
@@ -42,5 +46,13 @@ public class Author {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

@@ -1,6 +1,6 @@
 package com.betrybe.alexandria.entity;
 
-
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +19,14 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
+
+    @ManyToMany
+    @JoinTable(
+            name = "authors_books",
+            joinColumns = @JoinColumn(name = "book_id"), //do lado que esta atualmente
+            inverseJoinColumns = @JoinColumn(name = "author_id") // do outro lado
+    )
+    private List<Author> authors;
 
     public Book(String title, String genre) {
 
@@ -67,5 +75,13 @@ public class Book {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 }
