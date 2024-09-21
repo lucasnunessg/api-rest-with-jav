@@ -2,9 +2,14 @@ package com.betrybe.alexandria.controller;
 
 
 import com.betrybe.alexandria.controller.dto.BookCreationDto;
+import com.betrybe.alexandria.controller.dto.BookDetailCreationDto;
+import com.betrybe.alexandria.controller.dto.BookDetailDto;
 import com.betrybe.alexandria.controller.dto.BookDto;
 import com.betrybe.alexandria.entity.Book;
 import java.util.List;
+
+import com.betrybe.alexandria.entity.BookDetail;
+import com.betrybe.alexandria.exception.BookDetailNotFoundException;
 import com.betrybe.alexandria.exception.BookNotFoundException;
 import com.betrybe.alexandria.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +53,25 @@ public class BookController {
     public BookDto deleteBook(@PathVariable Long id) throws BookNotFoundException {
         return BookDto.fromEntity(bookService.deleteById(id));
     }
+
+    @PostMapping("/{bookId}/detail")
+    @ResponseStatus(HttpStatus.CREATED)
+    public BookDetailDto createBookDetail(@PathVariable Long bookId, @RequestBody BookDetailCreationDto bookDetailCreationDto) throws BookNotFoundException {
+        return BookDetailDto.fromEntity(
+                bookService.createBookDetail(bookId, bookDetailCreationDto.toEntity())
+        );
+      //  bookService.createBookDetail(bookId, bookDetailCreationDto.toEntity()) assim retornaria uma entidade, entao é preciso converter.
+    }
+
+    @GetMapping("/{bookId}/detail")
+    public BookDetailDto getBookDetail(@PathVariable Long bookId) throws BookDetailNotFoundException, BookNotFoundException {
+        return BookDetailDto.fromEntity(bookService.getBookDetail(bookId));
+    }
+
+    @DeleteMapping("/{bookId}/detail")
+    public BookDetailDto deleteBookDetail(@PathVariable Long bookId) throws BookNotFoundException, BookDetailNotFoundException {
+        return BookDetailDto.fromEntity(bookService.removeBookDetail(bookId));
+    }
+
 
 }

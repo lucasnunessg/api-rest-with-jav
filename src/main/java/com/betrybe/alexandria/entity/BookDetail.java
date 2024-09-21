@@ -19,7 +19,7 @@ public class BookDetail {
     @JoinColumn(name = "book_id") //aqui é definido a foreign key
     private Book book;
 
-    public BookDetail() {
+    public BookDetail(String summary, Integer pageCount, String year, String isbn) {
 
     }
 
