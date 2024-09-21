@@ -2,6 +2,7 @@ package com.betrybe.alexandria.entity;
 
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "publishers")
@@ -12,6 +13,9 @@ public class Publisher {
     private Long id;
     private String name;
     private String address;
+
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> books;
 
     public Publisher() {
     }
@@ -43,5 +47,13 @@ public class Publisher {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

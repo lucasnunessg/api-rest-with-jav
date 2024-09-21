@@ -16,6 +16,10 @@ public class Book {
     @OneToOne(mappedBy = "book", cascade = CascadeType.ALL) //eu preciso por o nome do atributo q define o relacionamento la no outro lado
     private BookDetail detail;
 
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
     public Book(String title, String genre) {
 
     }
@@ -55,5 +59,13 @@ public class Book {
 
     public void setDetail(BookDetail detail) {
         this.detail = detail;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }
