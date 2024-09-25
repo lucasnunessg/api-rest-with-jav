@@ -29,11 +29,9 @@ public class Book {
     )
     private List<Author> authors = new ArrayList<>();
 
-    public Book(String title, String genre) {
+    public Book(){}
 
-    }
-
-    public Book(Long id, String title) {
+    public Book(String genre, String title) {
         this.title = title;
         this.genre = genre;
     }
