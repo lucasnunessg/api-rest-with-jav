@@ -11,7 +11,7 @@ public record BookDto(Long id, String title, String genre, PublisherDto publishe
 
         return new BookDto(
                 book.getId(),
-                book.getGenre(),
+                book.getTitle(),
                 book.getGenre(),
                 publisherDto,
                 book.getAuthors()
