@@ -8,7 +8,6 @@ import com.betrybe.alexandria.controller.dto.BookDto;
 import com.betrybe.alexandria.entity.Book;
 import java.util.List;
 
-import com.betrybe.alexandria.entity.BookDetail;
 import com.betrybe.alexandria.exception.AuthorNotFoundException;
 import com.betrybe.alexandria.exception.BookDetailNotFoundException;
 import com.betrybe.alexandria.exception.BookNotFoundException;
@@ -35,7 +34,7 @@ public class BookController {
     }
 
     public List<BookDto> getAllBooks() {
-       List<Book> allBooks = bookService.findAll();
+       List<Book> allBooks = bookService.findAllBook();
        return allBooks.stream()
                .map(BookDto::fromEntity)
                .toList();

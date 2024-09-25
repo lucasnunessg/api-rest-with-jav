@@ -35,9 +35,11 @@ public class BookService {
                 .orElseThrow(BookNotFoundException::new);
     }
 
-    public List<Book> findAll() {
+    public List<Book> findAllBook() {
     return bookRepository.findAll();
     }
+
+
 
     public Book create(Book book) {
         return bookRepository.save(book);
