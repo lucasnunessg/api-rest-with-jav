@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 public class IdadeEmDias {
     public long calcularIdadeEmDias(String nascimento) {
         LocalDateTime hoje = LocalDateTime.now();
-        LocalDateTime diaNascimento = LocalDateTime.parse(nascimento);
+        LocalDateTime diaDefensoria = LocalDateTime.parse(nascimento);
 
-        Duration duracao = Duration.between(diaNascimento, hoje);
-        long quantidaeddeDias = duracao.toHours();
+        Duration duracao = Duration.between(diaDefensoria, hoje);
+        long quantidaeddeDias = duracao.toDays();
 
         return quantidaeddeDias;
     }
