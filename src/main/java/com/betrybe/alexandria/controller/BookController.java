@@ -1,10 +1,7 @@
 package com.betrybe.alexandria.controller;
 
 
-import com.betrybe.alexandria.controller.dto.BookCreationDto;
-import com.betrybe.alexandria.controller.dto.BookDetailCreationDto;
-import com.betrybe.alexandria.controller.dto.BookDetailDto;
-import com.betrybe.alexandria.controller.dto.BookDto;
+import com.betrybe.alexandria.controller.dto.*;
 import com.betrybe.alexandria.entity.Book;
 import java.util.List;
 
@@ -13,6 +10,7 @@ import com.betrybe.alexandria.exception.BookDetailNotFoundException;
 import com.betrybe.alexandria.exception.BookNotFoundException;
 import com.betrybe.alexandria.exception.PublisherNotFoundException;
 import com.betrybe.alexandria.service.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -100,5 +98,12 @@ public class BookController {
     @DeleteMapping("/{bookId}/authors/{authorId}")
     public BookDto removeFrmoAuthor(@PathVariable Long bookId, @PathVariable Long authorId) throws AuthorNotFoundException, BookNotFoundException {
         return BookDto.fromEntity(bookService.removeBookAuthor(bookId, authorId));
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserCreationDto createUser(@Valid @RequestBody UserCreationDto userCreate) {
+        // aqui os metodos, deveria ser criado também um service e um from entity no dto
+        return null;
     }
 }
